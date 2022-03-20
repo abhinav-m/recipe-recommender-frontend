@@ -1,5 +1,6 @@
 {
-  "name": "my-app",
+  "name": "Recipe-recommender-system",
+  "author": "Abhinav Mishra",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

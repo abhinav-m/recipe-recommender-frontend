@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import Landing from "./pages/landing/Landing.tsx"
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <Landing title="Landing page"/>
         <a
           className="App-link"
           href="https://reactjs.org"

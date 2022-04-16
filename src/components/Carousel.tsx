@@ -48,7 +48,7 @@ type RecipeDataProps = {
   ingredients: string[];
 };
 
-const Carousel = (data: RecipeDataProps[]): JSX.Element => {
+const Carousel = ({ data }): JSX.Element => {
   // const recipes = Array(5)
   //   .fill(recipe)
   //   .map((v, i) => (v["_id"] = `recipe_${i + 1}`));
@@ -68,11 +68,12 @@ const Carousel = (data: RecipeDataProps[]): JSX.Element => {
         />
       ))} */}
 
-      {data.data.map((d) => (
+      {Object.entries(data).map((d) => (
         <Card
-          title={d.title}
+          title={d[1].title}
+          recipeID={d[1].recipe_id}
           image="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg"
-          description={d.ingredients}
+          description={d[1].ingredients}
         />
       ))}
 

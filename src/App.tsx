@@ -6,6 +6,7 @@ import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.tsx";
+import RecommendationPage from "./pages/recommendation/Recommendation.tsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             index
             element={<Landing title="Choose the recipes you like" />}
           />
+          <Route path={"/recommend/:id"} element={<RecommendationPage />} />
           <Route path="test" element={<div>test</div>} />
         </Route>
       </Routes>

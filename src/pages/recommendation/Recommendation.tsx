@@ -16,7 +16,9 @@ const RecommendationPage = (props): JSX.Element => {
 
   useEffect(() => {
     const dataFetcher = async () => {
-      const result = await axios(`http://localhost:8080/recommendation/${id}`);
+      const result = await axios(
+        `https://fathomless-dawn-38291.herokuapp.com/recommendation/${id}`
+      );
       setData({ recipeData: result.data });
     };
     dataFetcher();

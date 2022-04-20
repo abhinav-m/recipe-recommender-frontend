@@ -13,7 +13,9 @@ const LandingPage = ({ title }: LandingPageProps): JSX.Element => {
 
   useEffect(() => {
     const dataFetcher = async () => {
-      const result = await axios("http://localhost:8080/recipes");
+      const result = await axios(
+        "https://fathomless-dawn-38291.herokuapp.com/recipes"
+      );
       setData({ recipeData: result.data });
     };
     dataFetcher();

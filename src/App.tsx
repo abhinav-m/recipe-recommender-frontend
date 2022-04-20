@@ -12,7 +12,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout heading="Plate Palate" />}>
+        <Route
+          path="/"
+          element={<Layout heading="Masala" subheading="(मसाला)" />}
+        >
           <Route
             index
             element={<Landing title="Choose the recipes you like" />}

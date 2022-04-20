@@ -47,6 +47,14 @@ const RecommendationPage = (props): JSX.Element => {
       USER_RATED = [[rated_id, rating]];
     }
 
+    if (window && window.gtag) {
+      window.gtag("event", "user_rated", {
+        user_id: USER_KEY,
+        recipe_key: rated_id,
+        value: rating,
+      });
+    }
+
     window.localStorage.setItem("USER_RATINGS", JSON.stringify(USER_RATED));
     setRated(true);
   };

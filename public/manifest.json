@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Masala",
+  "name": "Masala box - A recipe recommender systerm",
   "icons": [
     {
       "src": "favicon.ico",

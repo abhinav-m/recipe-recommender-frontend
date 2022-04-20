@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout heading="Recommender System" />}>
+        <Route path="/" element={<Layout heading="Plate Palate" />}>
           <Route
             index
             element={<Landing title="Choose the recipes you like" />}

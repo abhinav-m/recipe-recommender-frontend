@@ -38,6 +38,16 @@ const Layout = ({ heading, subheading }: LayoutProps): JSX.Element => {
     window.localStorage.setItem("USER_KEY", slug);
     USER_KEY = slug;
   }
+
+  if (USER_KEY) {
+    gtag("config", "G-230GB5N9V3", {
+      user_id: USER_KEY,
+    });
+    gtag("set", "user_properties", {
+      crm_id: USER_KEY,
+    });
+  }
+
   return (
     <div className="bg-white mt-2 sm:m-4 md:m-5 lg:m-5 xl:m-5">
       <Link to="/">

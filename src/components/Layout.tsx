@@ -2,7 +2,12 @@ import { generateSlug } from "random-word-slugs";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { faCoffee, faHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCoffee,
+  fa,
+  faHeartbeat,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Carousel from "./Carousel.tsx";
 
@@ -14,6 +19,18 @@ type LayoutProps = {
 const Layout = ({ heading, subheading }: LayoutProps): JSX.Element => {
   let USER_KEY = window.localStorage.getItem("USER_KEY");
   let newUser = false;
+
+  const [clickCount, setCount] = React.useState(0);
+  const [animationComplete, setAnimationComplete] = React.useState(false);
+  let animateHeart = false;
+  let timeout = null;
+
+  if (clickCount == 3) {
+    timeout = setTimeout(() => {
+      setAnimationComplete(true);
+    }, 3000);
+    animateHeart = true;
+  }
 
   if (!USER_KEY) {
     newUser = true;
@@ -36,7 +53,22 @@ const Layout = ({ heading, subheading }: LayoutProps): JSX.Element => {
         {" for your tastebuds™"}
         <p className="text-center text-sm mt-5 text-slate-500">
           {"Made with "}
-          <FontAwesomeIcon color="red" icon={faHeart} />
+          {animationComplete ? (
+            <a
+              rel="nooopener noreferrer"
+              href="https://www.linkedin.com/in/navneetgujjar/"
+            >
+              <FontAwesomeIcon color="red" icon={faHeart} />
+            </a>
+          ) : (
+            <FontAwesomeIcon
+              color="red"
+              size={animateHeart ? "3x" : "1x"}
+              bounce={animateHeart}
+              icon={faHeart}
+              onClick={() => setCount(clickCount + 1)}
+            />
+          )}
           {" and "} <FontAwesomeIcon color="brown" icon={faCoffee} /> {" by "}
           <a className="text-blue-500" href="https://github.com/abhinav-m">
             Abhinav Mishra

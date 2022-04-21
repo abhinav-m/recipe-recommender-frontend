@@ -20,6 +20,7 @@ const LandingPage = ({ title }: LandingPageProps): JSX.Element => {
       );
       setData({ recipeData: result.data });
       setLoading(false);
+      window.document.title = `Masala - Home`;
     };
     dataFetcher();
   }, [Object.keys(data).length]);

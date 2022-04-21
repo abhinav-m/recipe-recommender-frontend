@@ -23,12 +23,14 @@ const Layout = ({ heading, subheading }: LayoutProps): JSX.Element => {
   }
   return (
     <div className="bg-white mt-2 sm:m-4 md:m-5 lg:m-5 xl:m-5">
-      <h1 className="text-2xl text-center text-slate-500/55 font-bold">
-        {heading}
-      </h1>
-      <h2 className="text-l text-center text-slate-300/55 font-semi-bold">
-        {subheading}
-      </h2>
+      <Link to="/">
+        <h1 className="text-2xl text-center text-slate-500/55 font-bold">
+          {heading}
+        </h1>
+        <h2 className="text-l text-center text-slate-300/55 font-semi-bold">
+          {subheading}
+        </h2>
+      </Link>
       <h3 className="text-center text-sky-800 font-semibold mt-5">
         {"A recommender system"} <a className="font-bold">BUILT</a>
         {" for your tastebuds™"}

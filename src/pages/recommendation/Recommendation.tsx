@@ -7,12 +7,14 @@ import {
   faFaceGrinHearts,
   faFaceSmileBeam,
   faStar,
+  faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import * as React from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "../../components/Carousel.tsx";
 import Loader from "../../components/Loader.tsx";
+import { Link } from "react-router-dom";
 
 type LandingPageProps = {
   recipeID: string;
@@ -30,6 +32,7 @@ const RecommendationPage = (props): JSX.Element => {
   const [idx, setIdx] = useState(-1);
   const [rated, setRated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [helperTextShown, showHelperText] = useState(true);
 
   const handleRatingClick = (e) => {
     let { id } = e.target;
@@ -73,12 +76,28 @@ const RecommendationPage = (props): JSX.Element => {
       setOrigData({ data: original.data });
       setData({ recipeData: result.data });
       setLoading(false);
+      window.document.title = `Masala -  Recommendations for ${original.data.title}`;
     };
     dataFetcher();
   }, [id]);
 
   return (
     <div className="text-bold text-center m-8 text-slate-600 font-sans">
+      <Link
+        to="/"
+        onMouseOver={() => showHelperText(true)}
+        onMouseOut={() => showHelperText(false)}
+      >
+        {/* <p className={`${helperTextShown ? "animate-pulse" : "hidden"}`}>
+          Try another recipe!
+        </p> */}
+        <FontAwesomeIcon
+          color={"black"}
+          className="mb-4 hover:text-blue-500"
+          icon={faHome}
+          size={"2x"}
+        />
+      </Link>
       <p className="mb-4">
         {`${loading ? "Fetching" : "Here are the"} recommended recipes ${
           !loading ? "which taste like " : ""

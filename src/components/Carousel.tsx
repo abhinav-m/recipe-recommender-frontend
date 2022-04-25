@@ -30,13 +30,18 @@ const CarouselWrapper = ({ data }): JSX.Element => {
             recipeID={d[1].recipe_id || d[1]["Recipe_id"]}
             category={
               typeof d[1].category == "string"
-                ? d[1].category.slice(2, -2).split(",")
+                ? d[1].category
+                    .replaceAll("'", "")
+                    .replaceAll("[", "")
+                    .replaceAll("]", "")
+                    .split(",")
+                    .slice(0, 3)
                 : d[1].category
             }
             image="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg"
             description={
               typeof d[1].ingredients == "string"
-                ? d[1].ingredients.split(",").slice(0, 3)
+                ? d[1].ingredients.replaceAll("'", "").split(",").slice(0, 3)
                 : d[1].ingredients
             }
           />

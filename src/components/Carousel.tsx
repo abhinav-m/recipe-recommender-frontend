@@ -27,7 +27,7 @@ const CarouselWrapper = ({ data }): JSX.Element => {
         {Object.entries(data).map((d) => (
           <Card
             title={d[1].title || d[1]["Recipe Name"]}
-            recipeID={d[1].recipe_id}
+            recipeID={d[1].recipe_id || d[1]["Recipe_id"]}
             category={
               typeof d[1].category == "string"
                 ? d[1].category.slice(2, -2).split(",")

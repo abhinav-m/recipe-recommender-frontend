@@ -8,6 +8,7 @@ import {
   faFaceSmileBeam,
   faStar,
   faHome,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import * as React from "react";
@@ -26,12 +27,14 @@ const RecommendationPage = (props): JSX.Element => {
   const { id } = useParams();
 
   const [data, setData] = useState({ recipeData: {} });
+  const [dataSecond, setDataSecond] = useState({ recipeDataTFIDF: {} });
   const [origData, setOrigData] = useState({ data: {} });
 
   const stars = [1, 2, 3, 4, 5];
   const [idx, setIdx] = useState(-1);
   const [rated, setRated] = useState(false);
   const [loading, setLoading] = useState(true);
+
   const [helperTextShown, showHelperText] = useState(true);
 
   const handleRatingClick = (e) => {
@@ -49,6 +52,11 @@ const RecommendationPage = (props): JSX.Element => {
     } else {
       USER_RATED = [[rated_id, rating]];
     }
+
+    axios.post(
+      "https://fathomless-dawn-38291.herokuapp.com/rate_recommendation",
+      { user: USER_KEY, recipe_id: rated_id, rating_score: rating }
+    );
 
     if (window && window.gtag) {
       window.gtag("event", "user_rated", {
@@ -70,11 +78,16 @@ const RecommendationPage = (props): JSX.Element => {
         `https://fathomless-dawn-38291.herokuapp.com/recommendation/${id}`
       );
 
+      const recommendationIngredients = await axios(
+        `https://fathomless-dawn-38291.herokuapp.com/recommendations_tfidf/${id}`
+      );
+
       const original = await axios(
         `https://fathomless-dawn-38291.herokuapp.com/recipe/${id}`
       );
       setOrigData({ data: original.data });
       setData({ recipeData: result.data });
+      setDataSecond({ recipeDataTFIDF: recommendationIngredients.data });
       setLoading(false);
       window.document.title = `Masala -  Recommendations for ${original.data.title}`;
     };
@@ -165,7 +178,39 @@ const RecommendationPage = (props): JSX.Element => {
               {"Leave a rating!"}
             </a>
           </div>
-          {data && data.recipeData ? <Carousel data={data.recipeData} /> : null}
+
+          {data && data.recipeData ? (
+            <div>
+              <Carousel data={data.recipeData} />
+              <h3 className="font-bold text-center text-lg text-indigo-800">
+                {"Recommendations according to "}
+                <span className="text-purple-800 font-bold"> {"Taste"}</span>
+                <sup className="font-semibold">{"beta"}</sup>
+              </h3>
+            </div>
+          ) : null}
+          {dataSecond && dataSecond.recipeDataTFIDF ? (
+            <div className="mt-8 font-bold text-left text-indigo-800">
+              <Carousel data={data.recipeData} />
+              <h3 className="font-bold text-center text-lg text-indigo-800">
+                {"Recommendations according to Ingredients"}
+                <sup>
+                  <FontAwesomeIcon
+                    color="red"
+                    icon={faHeart}
+                    className="ml-2"
+                  />
+                  <a
+                    className="text-blue-500 text-md ml-2"
+                    rel="nooopener noreferrer"
+                    href="https://www.linkedin.com/in/dhwanitrivedi9/"
+                  >
+                    Dhwani Trivedi
+                  </a>
+                </sup>
+              </h3>
+            </div>
+          ) : null}
         </div>
       ) : (
         <Loader loading={loading} />

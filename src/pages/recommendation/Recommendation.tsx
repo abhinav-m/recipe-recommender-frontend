@@ -191,7 +191,7 @@ const RecommendationPage = (props): JSX.Element => {
           ) : null}
           {dataSecond && dataSecond.recipeDataTFIDF ? (
             <div className="mt-8 font-bold text-left text-indigo-800">
-              <Carousel data={data.recipeData} />
+              <Carousel data={dataSecond.recipeDataTFIDF} />
               <h3 className="font-bold text-center text-lg text-indigo-800">
                 {"Recommendations according to Ingredients"}
                 <sup>

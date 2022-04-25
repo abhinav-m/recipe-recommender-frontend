@@ -26,11 +26,19 @@ const CarouselWrapper = ({ data }): JSX.Element => {
       >
         {Object.entries(data).map((d) => (
           <Card
-            title={d[1].title}
+            title={d[1].title || d[1]["Recipe Name"]}
             recipeID={d[1].recipe_id}
-            category={d[1].category}
+            category={
+              typeof d[1].category == "string"
+                ? d[1].category.slice(2, -2).split(",")
+                : d[1].category
+            }
             image="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg"
-            description={d[1].ingredients}
+            description={
+              typeof d[1].ingredients == "string"
+                ? d[1].ingredients.split(",").slice(0, 3)
+                : d[1].ingredients
+            }
           />
         ))}
       </Carousel>

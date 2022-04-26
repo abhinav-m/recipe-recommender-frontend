@@ -12,16 +12,28 @@ type RecipeDataProps = {
 };
 
 const CarouselWrapper = ({ data }): JSX.Element => {
+  let width = window.screen.width;
+
+  let slidePercentage = 100;
+
+  if (width < 1000 && width > 650) {
+    slidePercentage = 40;
+  }
+
+  if (width >= 1200) {
+    slidePercentage = 33;
+  }
   return (
-    <div className="flex flex-col flex-wrap justify-center md:flex-row lg:flex-row content-center">
+    <div className="flex flex-wrap w-300 align-center justify-center md:flex-row lg:flex-row content-center text-center">
       <Carousel
         infiniteLoop
         autoPlay
         stopOnHover
+        className="w-3/4"
         showStatus
         showThumbs={false}
         centerMode
-        centerSlidePercentage={30}
+        centerSlidePercentage={slidePercentage}
       >
         {Object.entries(data).map((d) => (
           <Card

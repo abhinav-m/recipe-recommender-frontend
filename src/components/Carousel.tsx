@@ -19,7 +19,6 @@ const CarouselWrapper = ({ data }): JSX.Element => {
         autoPlay
         stopOnHover
         showStatus
-        emulateTouch
         showThumbs={false}
         centerMode
         centerSlidePercentage={30}

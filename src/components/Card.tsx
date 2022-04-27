@@ -33,7 +33,7 @@ const Card = ({
           alt="Sunset in the mountains"
         />
         <div className="px-6 py-4">
-          <div className="font-bold text-md sm:text-base mb-2">
+          <div className="font-bold text-md sm:text-base">
             {title}
             <FontAwesomeIcon
               color="purple"
@@ -44,10 +44,10 @@ const Card = ({
             ></FontAwesomeIcon>
           </div>
           <p className="hidden md:inline-block text-gray-700 text-md sm:text-base">
-            {description[0] + ",..."}
+            {description[0] + "..."}
           </p>
         </div>
-        <div className="px-6 pt-4 pb-2">
+        <div className="px-6 pt-2 pb-2">
           {category.slice(0, 3).map((d, idx) => (
             <span
               key={`cat_${recipeID + idx}`}

@@ -24,7 +24,7 @@ const CarouselWrapper = ({ data }): JSX.Element => {
     slidePercentage = 33;
   }
   return (
-    <div className="flex flex-wrap w-300 align-center justify-center md:flex-row lg:flex-row content-center text-center">
+    <div className="flex flex-wrap align-center justify-center md:flex-row lg:flex-row content-center text-center">
       <Carousel
         infiniteLoop
         autoPlay

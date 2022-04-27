@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Carousel from "./Carousel.tsx";
+import NavBar from "./NavBar.tsx";
 
 type LayoutProps = {
   heading: string;
@@ -20,17 +21,18 @@ const Layout = ({ heading, subheading }: LayoutProps): JSX.Element => {
   let USER_KEY = window.localStorage.getItem("USER_KEY");
   let newUser = false;
 
-  const [clickCount, setCount] = React.useState(0);
-  const [animationComplete, setAnimationComplete] = React.useState(false);
-  let animateHeart = false;
-  let timeout = null;
+  // const [clickCount, setCount] = React.useState(0);
+  // const [animationComplete, setAnimationComplete] = React.useState(false);
+  // let animateHeart = false;
+  // let timeout = null;
 
-  if (clickCount == 3) {
-    timeout = setTimeout(() => {
-      setAnimationComplete(true);
-    }, 3000);
-    animateHeart = true;
-  }
+  // if (clickCount == 3) {
+  //   timeout = setTimeout(() => {
+  //     setAnimationComplete(true);
+  //     clearTimeout(timeout);
+  //   }, 3000);
+  //   animateHeart = true;
+  // }
 
   if (!USER_KEY) {
     newUser = true;
@@ -50,13 +52,16 @@ const Layout = ({ heading, subheading }: LayoutProps): JSX.Element => {
 
   return (
     <div className="bg-white mt-2 sm:m-4 md:m-5 lg:m-5 xl:m-5">
-      <Link to="/">
+      <NavBar
+        heading={heading}
+        subheading={subheading}
+        newUser={newUser}
+        USER_KEY={USER_KEY}
+      />
+      {/* <Link to="/">
         <h1 className="text-2xl text-center text-slate-500/55 font-bold">
           {heading + " " + subheading}
         </h1>
-        {/* <h2 className="text-l text-center text-slate-300/55 font-semi-bold">
-          {subheading}
-        </h2> */}
       </Link>
       <h3 className="text-center text-sky-800 font-semibold mt-5">
         {"A recommender system"} <a className="font-bold">BUILT</a>
@@ -88,13 +93,7 @@ const Layout = ({ heading, subheading }: LayoutProps): JSX.Element => {
             Abhinav Mishra
           </a>
         </p>
-      </h3>
-      <p className="text-center mt-6 ">
-        {`Welcome ${!newUser ? "back " : ""}`}
-        <a className="font-sans font-semibold underline decoration-2 underline decoration-indigo-500">
-          {USER_KEY}
-        </a>
-      </p>
+      </h3> */}
 
       <Outlet />
     </div>

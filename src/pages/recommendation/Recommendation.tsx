@@ -95,7 +95,7 @@ const RecommendationPage = (props): JSX.Element => {
   }, [id]);
 
   return (
-    <div className="text-bold text-center m-8 text-slate-600 font-sans">
+    <div className="text-bold  text-xs md:text-lg text-center m-8 text-slate-600 font-sans">
       <Link
         to="/"
         onMouseOver={() => showHelperText(true)}
@@ -106,7 +106,7 @@ const RecommendationPage = (props): JSX.Element => {
         </p> */}
         <FontAwesomeIcon
           color={"black"}
-          className="mb-4 hover:text-blue-500"
+          className="mb-2 md:mb-4 hover:text-blue-500"
           icon={faHome}
           size={"2x"}
         />
@@ -182,7 +182,7 @@ const RecommendationPage = (props): JSX.Element => {
           {data && data.recipeData ? (
             <div>
               <Carousel data={data.recipeData} />
-              <h3 className="font-bold text-center text-lg text-indigo-800">
+              <h3 className="font-bold text-center text-sm md:text-lg text-indigo-800">
                 {"Recommendations according to "}
                 <span className="text-purple-800 font-bold"> {"Taste"}</span>
                 <sup className="font-semibold">{"beta"}</sup>
@@ -192,7 +192,7 @@ const RecommendationPage = (props): JSX.Element => {
           {dataSecond && dataSecond.recipeDataTFIDF ? (
             <div className="mt-8 font-bold text-left text-indigo-800">
               <Carousel data={dataSecond.recipeDataTFIDF} />
-              <h3 className="font-bold text-center text-lg text-indigo-800">
+              <h3 className="font-bold text-center text-sm md:text-lg text-indigo-800">
                 {"Recommendations according to Ingredients"}
                 <sup>
                   <FontAwesomeIcon

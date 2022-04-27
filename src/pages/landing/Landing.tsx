@@ -124,11 +124,7 @@ const LandingPage = ({ title }: LandingPageProps): JSX.Element => {
       <p className="text-md md:text-lg text-center mt-8 text-slate-800 font-sans">
         {title}
       </p>
-      {/* {!loading ? (
-        <Carousel data={data.recipeData} />
-      ) : (
-        <Loader loading={loading} />
-      )} */}
+
       {!loading ? (
         <PaginatedItems
           itemsPerPage={8}

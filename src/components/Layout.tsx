@@ -21,19 +21,6 @@ const Layout = ({ heading, subheading }: LayoutProps): JSX.Element => {
   let USER_KEY = window.localStorage.getItem("USER_KEY");
   let newUser = false;
 
-  // const [clickCount, setCount] = React.useState(0);
-  // const [animationComplete, setAnimationComplete] = React.useState(false);
-  // let animateHeart = false;
-  // let timeout = null;
-
-  // if (clickCount == 3) {
-  //   timeout = setTimeout(() => {
-  //     setAnimationComplete(true);
-  //     clearTimeout(timeout);
-  //   }, 3000);
-  //   animateHeart = true;
-  // }
-
   if (!USER_KEY) {
     newUser = true;
     const slug = generateSlug(3, { format: "title" });
@@ -58,42 +45,6 @@ const Layout = ({ heading, subheading }: LayoutProps): JSX.Element => {
         newUser={newUser}
         USER_KEY={USER_KEY}
       />
-      {/* <Link to="/">
-        <h1 className="text-2xl text-center text-slate-500/55 font-bold">
-          {heading + " " + subheading}
-        </h1>
-      </Link>
-      <h3 className="text-center text-sky-800 font-semibold mt-5">
-        {"A recommender system"} <a className="font-bold">BUILT</a>
-        {" for your tastebuds™"}
-        <p className="text-center text-sm mt-5 text-slate-500">
-          {"Made with "}
-          {animationComplete ? (
-            <a
-              rel="nooopener noreferrer"
-              href="https://www.linkedin.com/in/navneetgujjar/"
-            >
-              <FontAwesomeIcon color="red" icon={faHeart} />
-            </a>
-          ) : (
-            <FontAwesomeIcon
-              color="red"
-              size={animateHeart ? "3x" : "1x"}
-              bounce={animateHeart}
-              icon={faHeart}
-              onClick={() => setCount(clickCount + 1)}
-            />
-          )}
-          {" and "} <FontAwesomeIcon color="brown" icon={faCoffee} /> {" by "}
-          <a
-            className="text-blue-500"
-            rel="nooopener noreferrer"
-            href="https://www.linkedin.com/in/amishra93/"
-          >
-            Abhinav Mishra
-          </a>
-        </p>
-      </h3> */}
 
       <Outlet />
     </div>

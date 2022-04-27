@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Layout heading="Masala" subheading="(मसाला)" />}
+          element={<Layout heading="Masala" subheading="मसाला" />}
         >
           <Route
             index

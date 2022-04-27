@@ -46,7 +46,11 @@ const NavBar = ({
             className="mr-1 md:mr-4"
           ></FontAwesomeIcon>
           <p className="hidden sm:inline-block">{heading + " "}</p>
-          <p className="inline-block ml-1 md:ml-2">{subheading}</p>
+          <p className="inline-block ml-1 md:ml-2">
+            <span className="hidden sm:inline">(</span>
+            {subheading}
+            <span className="hidden sm:inline">)</span>
+          </p>
         </h1>
         <h3 className="hidden md:block text-sm font-bold">
           {"A recommender system"} <span className="font-bold">BUILT</span>
